@@ -1,0 +1,19 @@
+[
+    {
+        "id": "4fbcf58e.c6fb2c",
+        "type": "function",
+        "z": "395b6096.05a3b",
+        "name": "Return status",
+        "func": "msg.payload=\"GPIO5 set to High\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 350,
+        "y": 300,
+        "wires": [
+            [
+                "a66a195b.d88078",
+                "58b5ebd6.426594"
+            ]
+        ]
+    }
+]

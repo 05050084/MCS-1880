@@ -1,0 +1,132 @@
+[
+    {
+        "id": "831cd76a.958ee8",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "2d9a6853.0c0d28",
+        "type": "inject",
+        "z": "831cd76a.958ee8",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 220,
+        "wires": [
+            [
+                "ebfb5284.0a074"
+            ]
+        ]
+    },
+    {
+        "id": "ebfb5284.0a074",
+        "type": "function",
+        "z": "831cd76a.958ee8",
+        "name": "payload",
+        "func": "msg.headers={\n    deviceKey:\"50TE4Cei2u0NYgF8\"\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 300,
+        "y": 220,
+        "wires": [
+            [
+                "61208776.8a3f68",
+                "7bb75441.59c5ac"
+            ]
+        ]
+    },
+    {
+        "id": "302e17ed.6e6e48",
+        "type": "debug",
+        "z": "831cd76a.958ee8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 650,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "61208776.8a3f68",
+        "type": "http request",
+        "z": "831cd76a.958ee8",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "url": "http://api.mediatek.com/mcs/v2/devices/Do6zwK70/datachannels/Temperature/datapoints.csv",
+        "tls": "",
+        "x": 470,
+        "y": 300,
+        "wires": [
+            [
+                "cd348bc.af0e278",
+                "302e17ed.6e6e48"
+            ]
+        ]
+    },
+    {
+        "id": "cd348bc.af0e278",
+        "type": "http response",
+        "z": "831cd76a.958ee8",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 610,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "7bb75441.59c5ac",
+        "type": "http request",
+        "z": "831cd76a.958ee8",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "url": "http://api.mediatek.com/mcs/v2/devices/Do6zwK70/datachannels/Humidity/datapoints.csv",
+        "tls": "",
+        "x": 470,
+        "y": 140,
+        "wires": [
+            [
+                "e4e29ebe.6a9f1",
+                "7e02d16c.b40c1"
+            ]
+        ]
+    },
+    {
+        "id": "e4e29ebe.6a9f1",
+        "type": "debug",
+        "z": "831cd76a.958ee8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 650,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "7e02d16c.b40c1",
+        "type": "http response",
+        "z": "831cd76a.958ee8",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 610,
+        "y": 200,
+        "wires": []
+    }
+]

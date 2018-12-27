@@ -1,0 +1,125 @@
+[
+    {
+        "id": "fbd0e9f9.235dc8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "1cc06419.44e0fc",
+        "type": "rpi-gpio in",
+        "z": "fbd0e9f9.235dc8",
+        "name": "button",
+        "pin": "7",
+        "intype": "up",
+        "debounce": "25",
+        "read": true,
+        "x": 50,
+        "y": 220,
+        "wires": [
+            [
+                "ab304eb9.f4d83"
+            ]
+        ]
+    },
+    {
+        "id": "ab304eb9.f4d83",
+        "type": "switch",
+        "z": "fbd0e9f9.235dc8",
+        "name": "if input==1",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 190,
+        "y": 220,
+        "wires": [
+            [
+                "f9ccb09c.7fb72"
+            ],
+            [
+                "87fdddaa.7a17b"
+            ]
+        ]
+    },
+    {
+        "id": "f9ccb09c.7fb72",
+        "type": "change",
+        "z": "fbd0e9f9.235dc8",
+        "name": "change to 0",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 410,
+        "y": 180,
+        "wires": [
+            [
+                "d6fca151.c4ea1"
+            ]
+        ]
+    },
+    {
+        "id": "87fdddaa.7a17b",
+        "type": "change",
+        "z": "fbd0e9f9.235dc8",
+        "name": "change to 1",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 410,
+        "y": 260,
+        "wires": [
+            [
+                "d6fca151.c4ea1"
+            ]
+        ]
+    },
+    {
+        "id": "d6fca151.c4ea1",
+        "type": "rpi-gpio out",
+        "z": "fbd0e9f9.235dc8",
+        "name": "LED",
+        "pin": "11",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "x": 590,
+        "y": 220,
+        "wires": []
+    }
+]
